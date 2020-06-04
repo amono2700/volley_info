@@ -1,0 +1,63 @@
+
+body{
+  margin:0;
+}
+
+.container{
+  display: flex;
+}
+/*header*/
+header{
+  display:flex;
+  background-image:url("/assets/sport-908267_1280.jpg");
+  background-position:0% 25%;
+  background-size:cover;
+  ul{
+    display:flex;
+    list-style: none;
+    padding-left: 0;
+    margin-left: 60vw;
+    li{
+      padding: 30px;
+      a{
+      text-decoration: none;
+      color:#fff;
+      font-size: 14px;
+      font-family: Comic Sans MS;
+        &:hover{
+          text-decoration: underline;
+        }
+       }
+      }
+
+  }
+}
+.logo{
+  padding-top: 10px;
+  padding-left: 5vw;
+  i{
+    color:#fff;
+  }
+  h1{
+    display: inline-block;
+    color:#fff;
+    font-family:Comic Sans MS;
+  }
+}
+
+/*sidebar*/
+.sidebar{
+
+}
+.sidebar_item{
+  top:10px;
+  position: -webkit-sticky;
+  position: sticky;
+  width:25vw;
+}
+
+.main-article{
+  width:50vw;
+  height:200vh;
+
+}

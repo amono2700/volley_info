@@ -4,7 +4,12 @@
     <h1>volley-info</h1>
   </div>
   <ul>
-    <li><a href="#">LOGIN</a></li>
-    <li><a href="#">SIGNUP</a></li>
+    <% if user_signed_in? %>
+      <li><%= link_to 'current_user.name', edit_user_registration_path %></li>
+      <li><%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'SIGNUP', new_user_registration_path %></li>
+      <li><%= link_to 'LOGIN', new_user_session_path %></li>
+    <% end %>
   </ul>
 </header>

@@ -1,0 +1,6 @@
+<%= form_for(@topic, url: topics_path) do |f| %>
+  <%= f.label :title, class:"label-control" %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.submit "作成", class: "btn btn-submit" %>
+<% end %>

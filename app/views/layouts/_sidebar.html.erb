@@ -2,12 +2,23 @@
   <div class="sidebar">
    <div class="sidebar_item">
      <ul>
-       <li><p>volley-infoは全国のバレーボールプレイヤーのための情報交換掲示板です</p></li>
-       <li><%= link_to "profile","#" %></li>
-       <li><%= link_to "login", "#" %></li>
-        <li><%= link_to "signup","#" %></li>
-       <li><%= link_to "logout","#" %></li>
-       <li><%= link_to "Account deletion","#" %></li>
+         <li><p>volley-infoは全国のバレーボールプレイヤーのための情報交換掲示板です</p></li>
+        <%# if user_signed_in? %>
+         <%# if current_user.admin? %>
+           <li><strong>管理者としてログインしています</strong></li>
+         <%# end %>
+           <li><%= link_to "profile","#" %></li>
+           <li><%= link_to "logout","#" %></li>
+           <%# if current_user.admin %>
+           <li>TOPICを作成する<%= render 'topics/form' %></li>
+             <%# end %>
+        <%# else %>
+            <li><%= link_to 'SIGNUP', new_user_registration_path %></li>
+            <li><%= link_to 'LOGIN', new_user_session_path %></li>
+        <% #end %>
+
+
+
      </ul>
    </div>
   </div>

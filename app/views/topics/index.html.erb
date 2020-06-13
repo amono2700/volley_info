@@ -1,0 +1,9 @@
+<h1>投稿一覧</h1>
+<% if @topics.present? %>
+<ul>
+  <% @topics.each do |topic| %>
+    <li><%= topic.title %></li>
+  <% end %>
+</ul>
+<%= paginate @topics %>
+  <% end %>

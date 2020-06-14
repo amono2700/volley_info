@@ -3,4 +3,6 @@ class PagesController < ApplicationController
     @topic = Topic.new
     @topics = Topic.all.page(params[:page])
   end
+
+
 end

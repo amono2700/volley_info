@@ -2,7 +2,13 @@
 <% if @topics.present? %>
 <ul>
   <% @topics.each do |topic| %>
-    <li><%= topic.title %></li>
+    <li><%= topic.title %>
+      <% if user_signed_in? %>
+  　　　<% if current_user.admin? %>
+         <%= link_to "削除",topic_path(topic), method: :delete %>
+         <% end %>
+         <% end %>
+       </li>
   <% end %>
 </ul>
 <%= paginate @topics %>

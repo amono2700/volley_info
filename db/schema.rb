@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20200604154938) do
     t.string "provider"
     t.string "uid"
     t.string "username"
-    t.boolean "admin", default: true
+    t.boolean "admin", default: false
     t.string "name"
     t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

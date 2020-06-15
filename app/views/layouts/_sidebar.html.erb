@@ -3,20 +3,22 @@
    <div class="sidebar_item">
      <ul>
          <li><p>volley-infoは全国のバレーボールプレイヤーのための情報交換掲示板です</p></li>
-
-           <li><strong>管理者としてログインしています</strong></li>
-
-           <li><%= link_to "profile","#" %></li>
-           <li><%= link_to "logout","#" %></li>
-
-           <li>TOPICを作成する  </li>
-
-            <li><%= link_to 'SIGNUP', new_user_registration_path %></li>
-            <li><%= link_to 'LOGIN', new_user_session_path %></li>
-      
-
-
-
-     </ul>
+         <% if user_signed_in? %>
+    　　　　　<% if current_user.admin? %>
+               <li><strong>管理者としてログインしています</strong></li>
+               <%= form_for(@topic, url: topics_path) do |f| %>
+                 <%= f.label :title,"TOPICを作成する", class:"label-control" %>
+                 <%= f.text_field :title, class: 'form-control' %>
+                 <%= f.submit "作成する" %>
+               <% end %>
+             <% end %>
+               <li><%= link_to "topics", root_url %></li>
+               <li><%= link_to "profile", edit_user_registration_path %></li>
+               <li><%= link_to "logout",destroy_user_session_path,data: { confirm: "本当にログアウトしますか?" }, method: :delete %></li>
+            <% else %>
+                <li><%= link_to 'signup', new_user_registration_path %></li>
+                <li><%= link_to 'login', new_user_session_path %></li>
+             <% end %>
+    </ul>
    </div>
   </div>

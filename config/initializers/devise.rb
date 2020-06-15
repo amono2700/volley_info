@@ -296,5 +296,9 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-  config.omniauth :twitter, "8aIxAXUzkhmdbToZnVPRxJIoH", "3vfSA9Gs7E4H40B39NLFlsNs0EQQPMbpotnOwohmyYiFo2dOH4",scope: 'email', callback_url: 'still-hamlet-25120.herokuapp.com/auth/twitter/callback'
+  config.omniauth :twitter, ENV['TWITTER_API_KEY'],
+                            ENV['TWITTER_API_SECRET_KEY'],scope: 'email',
+                            callback_url:"http://127.0.0.1:3000/users/auth/twitter/callback"
+
+  config.mailer_sender = ENV['GMAIL_ADRESS']
 end

@@ -15,7 +15,8 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic.destroy
+      @topic = Topic.find_by(id: params[:id])
+      @topic.destroy
       redirect_to root_url
   end
 

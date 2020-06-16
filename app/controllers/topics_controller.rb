@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  include ApplicationHelper
+  before_action :logged_in?, only: [:create, :destroy]
 
   def create
     @topic = Topic.new(topic_params)

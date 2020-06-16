@@ -6,7 +6,7 @@
          <% if user_signed_in? %>
     　　　　　<% if current_user.admin? %>
                <li><strong>管理者としてログインしています</strong></li>
-               <%= form_for(@topic, url: topics_path) do |f| %>
+               <%= form_for(@topic, url: topics_path, method: :post) do |f| %>
                  <%= f.label :title,"TOPICを作成する", class:"label-control" %>
                  <%= f.text_field :title, class: 'form-control' %>
                  <%= f.submit "作成する" %>

@@ -1,12 +1,17 @@
 <h1><%= @topic.title %></h1>
-<% @comments.each do |comment| %>
-<li><%= comment.content %>
-<%= comment.user.name %>
-ユーザーID:<%= comment.user.id %></li>
-<% end %>
+  <% @comments.each do |comment| %>
+    <li>
+      ユーザーID:<%= comment.user.id %>
+      <%= comment.user.name %>
+      <%= comment.content %>
+      <% if current_user == comment.user %>
+        <%= link_to "削除", comment_path(comment), method: :delete, data: { confirm: "本当に削除しますか?" } %>
+      <% end %>
+    </li>
+  <% end %>
 
-<%= form_for(@comment, url: topic_comments_path(@topic)) do |f| %>
-  <%= f.text_field :content %>
-<%= f.hidden_field :topic_id, :value => @topic.id %>
-<%= f.submit "送信する" %>
-<% end %>
+  <%= form_for(@comment, url: comments_path(@comment)) do |f| %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :topic_id, :value => @topic.id %>
+    <%= f.submit "送信する" %>
+  <% end %>

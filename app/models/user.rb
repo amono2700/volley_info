@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:confirmable,
          :omniauthable, omniauth_providers: [:twitter]
-
+  has_many :comments, dependent: :destroy
          def self.find_for_oauth(auth)
            user = User.where(uid: auth.uid, provider: auth.provider).first
 

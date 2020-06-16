@@ -1,8 +1,8 @@
-<h1>投稿一覧</h1>
+<h1>TOPIC一覧</h1>
 <% if @topics.present? %>
 <ul>
   <% @topics.each do |topic| %>
-    <li><%= topic.title %>
+    <li><%= link_to topic.title,topic_path(topic) %>
       <% if user_signed_in? %>
   　　　<% if current_user.admin? %>
          <%= link_to "削除",topic_path(topic), method: :delete %>

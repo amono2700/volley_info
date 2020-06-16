@@ -20,6 +20,12 @@ class TopicsController < ApplicationController
       redirect_to root_url
   end
 
+  def show
+    @topic = Topic.find_by(id: params[:id])
+    @comment = Comment.new
+    @comments = @topic.comments
+  end
+
   private
 
   def topic_params

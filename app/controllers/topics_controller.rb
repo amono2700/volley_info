@@ -1,5 +1,4 @@
 class TopicsController < ApplicationController
-  include ApplicationHelper
   before_action :logged_in?, only: [:create, :destroy]
 
   def create
@@ -26,6 +25,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find_by(id: params[:id])
     @comment = Comment.new
     @comments = @topic.comments
+    @like = Like.new
   end
 
   private

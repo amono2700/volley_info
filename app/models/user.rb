@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,:confirmable,
          :omniauthable, omniauth_providers: [:twitter]
   has_many :comments, dependent: :destroy
-         def self.find_for_oauth(auth)
+  has_many :likes, dependent: :destroy
+   def self.find_for_oauth(auth)
            user = User.where(uid: auth.uid, provider: auth.provider).first
 
            unless user
@@ -22,6 +23,10 @@ class User < ApplicationRecord
        end
       user.skip_confirmation!
    user
+  end
+
+  def already_liked?(comment)
+    self.likes.exists?(comment_id: comment.id)
   end
 
   private

@@ -3,6 +3,7 @@
 <ul>
   <% @topics.each do |topic| %>
     <li><%= link_to topic.title,topic_path(topic) %>
+      <p>コメント数:<%= topic.comments.count %></p>
       <% if user_signed_in? %>
   　　　<% if current_user.admin? %>
          <%= link_to "削除",topic_path(topic), method: :delete %>

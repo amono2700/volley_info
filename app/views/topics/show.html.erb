@@ -2,8 +2,14 @@
   <% @comments.each do |comment| %>
     <li>
       ユーザーID:<%= comment.user.id %>
-      <%= comment.user.name %>
-      <%= comment.content %>
+      <h3><%= comment.user.name %></h3>
+      <h3><%= comment.content %></h3>
+      <h3>いいね件数:<%= comment.likes.count %></h3>
+      <% if current_user.already_liked?(comment) %>
+       <%= button_to 'いいね取り消し',comment_like_path(comment),method: :delete  %>
+      <% else %>
+       <%= button_to 'いいね', comment_likes_path(comment) %>
+       <% end %>
       <% if current_user == comment.user %>
         <%= link_to "削除", comment_path(comment), method: :delete, data: { confirm: "本当に削除しますか?" } %>
       <% end %>
